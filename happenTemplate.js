@@ -124,7 +124,14 @@ var library = (function() {
                 var weekDayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
                 return weekDayNames[today];
             },
-			WeekOfYear: function(){}
+			WeekOfYear: function(){
+                                var now = new Date();
+                                var start = new Date(now.getFullYear(), 0, 0);
+                                var diff = now - start;
+                                var oneDay = 1000 * 60 * 60 * 24;
+                                var day = Math.floor(diff / oneDay);
+                                return String(Math.round(day / 7));
+            }
 		}
 	})(),
 	Month: (function(){
@@ -186,8 +193,35 @@ var library = (function() {
 		return {
 			DayOfYear: (function(){
 				return {
-					Numeral: function(){},
-					Ordinal: function(){}
+					Numeral: function(){
+                                var now = new Date();
+                                var start = new Date(now.getFullYear(), 0, 0);
+                                var diff = now - start;
+                                var oneDay = 1000 * 60 * 60 * 24;
+                                var day = Math.floor(diff / oneDay);
+                                return day.toString();
+                                
+                    },
+					Ordinal: function(){
+                                     var now = new Date();
+                                     var start = new Date(now.getFullYear(), 0, 0);
+                                     var diff = now - start;
+                                     var oneDay = 1000 * 60 * 60 * 24;
+                                     var day = Math.floor(diff / oneDay);
+                                
+                                            if ([1,21,31,41,51,61,71,81,91,101,121,131,141,151,161,171,181,191,201,221,231,241,251,261,271,281,291,301,321,331,341,351].includes(day)) {
+                                                return String(day) + 'st';
+                                            }
+                                            if ([2,22,32,42,52,62,72,82,92,102,122,132,142,152,162,172,182,192,202,222,232,242,252,262,272,282,292,302,322,332,342,352].includes(day)) {
+                                                return String(day) + 'nd';
+                                            }
+                                            if ([3,23,33,43,53,63,73,83,93,103,123,133,143,153,163,173,183,193,203,223,233,243,253,263,273,283,293,303,323,333,343,353].includes(day)) {
+                                                return String(day) + 'rd';
+                                            }
+                                            else {
+                                                return String(day) + 'th';
+                                            }
+                    }
 				}
 			})(),
 			YearFull: function(){
@@ -219,32 +253,5 @@ var library = (function() {
 
 
 
-/*
-// function daysInFebruary(year) {
-//     if(year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
-//         // Leap year
-//         return 29;
-//     } else {
-//         // Not a leap year
-//         return 28;
-//     }
-// }
 
-// function dateToDay(date) {
-//     var feb = daysInFebruary(date.getFullYear());
-//     var aggregateMonths = [0, // January
-//                            31, // February
-//                            31 + feb, // March
-//                            31 + feb + 31, // April
-//                            31 + feb + 31 + 30, // May
-//                            31 + feb + 31 + 30 + 31, // June
-//                            31 + feb + 31 + 30 + 31 + 30, // July
-//                            31 + feb + 31 + 30 + 31 + 30 + 31, // August
-//                            31 + feb + 31 + 30 + 31 + 30 + 31 + 31, // September
-//                            31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30, // October
-//                            31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31, // November
-//                            31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30, // December
-//                          ];
-//     return aggregateMonths[date.getMonth()] + date.getDate();
-// }
-*/
+ 
