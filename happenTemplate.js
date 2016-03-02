@@ -219,3 +219,32 @@ var library = (function() {
 
 
 
+/*
+// function daysInFebruary(year) {
+//     if(year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+//         // Leap year
+//         return 29;
+//     } else {
+//         // Not a leap year
+//         return 28;
+//     }
+// }
+
+// function dateToDay(date) {
+//     var feb = daysInFebruary(date.getFullYear());
+//     var aggregateMonths = [0, // January
+//                            31, // February
+//                            31 + feb, // March
+//                            31 + feb + 31, // April
+//                            31 + feb + 31 + 30, // May
+//                            31 + feb + 31 + 30 + 31, // June
+//                            31 + feb + 31 + 30 + 31 + 30, // July
+//                            31 + feb + 31 + 30 + 31 + 30 + 31, // August
+//                            31 + feb + 31 + 30 + 31 + 30 + 31 + 31, // September
+//                            31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30, // October
+//                            31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31, // November
+//                            31 + feb + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30, // December
+//                          ];
+//     return aggregateMonths[date.getMonth()] + date.getDate();
+// }
+*/
